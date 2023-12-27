@@ -53,11 +53,11 @@ static void flash_toggle(PluginState* const plugin_state) {
     furi_hal_gpio_write(&gpio_ext_pc3, false);
     furi_hal_gpio_init(&gpio_ext_pc3, GpioModeOutputPushPull, GpioPullNo, GpioSpeedVeryHigh);
     furi_hal_gpio_write(&gpio_ext_pb2, false);
-    furi_hal_gpio_init(&gpio_ext_pb2, GpioModeOutputPushPull, GpioPullYes, GpioSpeedVeryHigh);
+    furi_hal_gpio_init(&gpio_ext_pb2, GpioModeOutputPushPull, GpioPull, GpioSpeedVeryHigh);
     furi_hal_gpio_write(&gpio_ext_pb3, false);
     furi_hal_gpio_init(&gpio_ext_pb3, GpioModeOutputPushPull, GpioPullNo, GpioSpeedVeryHigh);
     furi_hal_gpio_write(&gpio_ext_pa4, false);
-    furi_hal_gpio_init(&gpio_ext_pa4, GpioModeOutputPushPull, GpioPullYes, GpioSpeedVeryHigh);
+    furi_hal_gpio_init(&gpio_ext_pa4, GpioModeOutputPushPull, GpioPull, GpioSpeedVeryHigh);
     furi_hal_gpio_write(&gpio_ext_pa6, false);
     furi_hal_gpio_init(&gpio_ext_pa6, GpioModeOutputPushPull, GpioPullNo, GpioSpeedVeryHigh);
 
