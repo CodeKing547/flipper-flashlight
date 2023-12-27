@@ -1,11 +1,18 @@
-// by @xMasterX
-
+#include "speaker_hal.h"
 #include <furi.h>
 #include <furi_hal_power.h>
 #include <gui/gui.h>
 #include <input/input.h>
 #include <stdlib.h>
 #include <gui/elements.h>
+
+void tracker_speaker_stop() {
+    LL_TIM_DisableAllOutputs(FURI_HAL_SPEAKER_TIMER);
+}
+
+void tracker_speaker_init() {
+    furi_hal_speaker_start(200.0f, 0.01f);
+}
 
 typedef enum {
     EventTypeTick,
@@ -34,11 +41,13 @@ static void render_callback(Canvas* const canvas, void* ctx) {
 
     if(!plugin_state->is_on) {
         elements_multiline_text_aligned(
-            canvas, 64, 28, AlignCenter, AlignTop, "Press OK button turn on");
+            canvas, 64, 28, AlignCenter, AlignTop, "Press OK button turn on spotlight...");
+            tracker_speaker_stop()
     } else {
-        elements_multiline_text_aligned(canvas, 64, 28, AlignCenter, AlignTop, "Light is on!");
+        elements_multiline_text_aligned(canvas, 64, 28, AlignCenter, AlignTop, "Spotlight pins are on!");
         elements_multiline_text_aligned(
-            canvas, 64, 40, AlignCenter, AlignTop, "Press OK button to off");
+            canvas, 64, 40, AlignCenter, AlignTop, "Press OK button to off...");
+            tracker_speaker_init()
     }
 
     furi_mutex_release(plugin_state->mutex);
